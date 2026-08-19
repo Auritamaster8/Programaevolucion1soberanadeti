@@ -5,176 +5,237 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orden de Inicio | Programa Evolución Soberana de Ti</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b0f19; color: #f3f4f6; }
-        .serif { font-family: 'Playfair Display', serif; }
-        .gold-text { color: #d4af37; }
-        .gold-gradient-text {
-            background: linear-gradient(135deg, #fff2be 0%, #d4af37 50%, #aa7c11 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* ==========================================
+           PALETA DE COLORES (ACTUALIZADA)
+           ========================================== */
+        :root {
+            --bg-blanco: #ffffff;
+            --bg-beige: #e5dbc3;
+            --bg-arena: #f4d7b5;
+            --dorado: #d1b35a;
+            --verde-esmeralda: #027361;
+            --verde-bosque: #1a3a17;
+            --whatsapp-green: #25D366;
         }
-        .gold-btn {
-            background: linear-gradient(135deg, #e6c666 0%, #d4af37 50%, #996e00 100%);
-            color: #000;
+
+        /* Corrección de espaciado para que no se peguen las letras */
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg-blanco); 
+            color: var(--verde-bosque); 
+            line-height: 1.6;
+            letter-spacing: normal;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        .text-verde-bosque { color: var(--verde-bosque); }
+        .text-verde-esmeralda { color: var(--verde-esmeralda); }
+        .text-dorado { color: var(--dorado); }
+
+        .card-clara {
+            background-color: var(--bg-beige);
+            border: 1px solid var(--dorado);
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(26, 58, 23, 0.05);
+        }
+
+        .card-arena {
+            background-color: var(--bg-arena);
+            border: 1px solid var(--dorado);
+            border-radius: 16px;
+        }
+
+        .btn-principal {
+            background-color: var(--verde-esmeralda);
+            color: var(--bg-blanco);
             font-weight: 700;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
-        .gold-btn:hover {
+
+        .btn-principal:hover {
+            background-color: var(--verde-bosque);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 20px rgba(2, 115, 97, 0.2);
         }
-        .card-glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+
+        /* Botón Flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 58px;
+            height: 58px;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-green);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
+
+        .whatsapp-float:hover { transform: scale(1.1); }
+        
+        /* Modal Popup */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26, 58, 23, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 2000;
+            opacity: 0; visibility: hidden; transition: all 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
     </style>
 </head>
 <body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
 
-    <div class="max-w-4xl mx-auto space-y-10">
+    <div class="max-w-4xl mx-auto space-y-12">
 
-        <header class="text-center space-y-3 border-b border-yellow-600/20 pb-8">
-            <div class="inline-block px-4 py-1 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-xs font-semibold uppercase tracking-widest gold-text">
-                Comunidad Hispana Online & Luzaura Creativa
-            </div>
-            <h1 class="text-3xl sm:text-5xl font-bold serif gold-gradient-text tracking-wide">
-                PROGRAMA EVOLUCIÓN SOBERANA DE TI
+        <header class="text-center space-y-4 pt-6 border-b border-yellow-600/30 pb-10">
+            <h1 class="text-4xl sm:text-6xl font-bold font-serif text-verde-bosque tracking-tight leading-tight">
+                EVOLUCIÓN SOBERANA DE TI
             </h1>
-            <p class="text-sm text-gray-400">Medellín, Colombia &bull; +57 321 867 56 02 &bull; holacomunidadhispana@gmail.com</p>
+            <p class="text-base sm:text-lg text-verde-bosque max-w-2xl mx-auto font-medium leading-relaxed">
+                Un espacio de claridad, coherencia y verdad encarnada para recordar cómo operar desde lo real.
+            </p>
         </header>
 
-        <section class="card-glass p-6 sm:p-8 rounded-2xl relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-1 h-full gold-gradient"></div>
-            <h2 class="text-xl font-semibold gold-text mb-4 uppercase tracking-wider text-sm">Nuestra Promesa para Ti</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                        <span class="gold-text">✦</span> Claridad
-                    </h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">
-                        Para reconocer lo real y dejar de sostener lo que no eres.
-                    </p>
+        <section class="card-clara p-6 sm:p-10 space-y-6">
+            <div class="border-b border-yellow-600/20 pb-4">
+                <span class="text-xs uppercase tracking-widest text-dorado font-bold">Claridad y Diagnóstico</span>
+                <h2 class="text-2xl font-bold font-serif text-verde-bosque mt-1">Este espacio es para ti si...</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm text-verde-bosque">
+                <div class="flex items-start gap-3 p-3 bg-white/50 rounded-lg">
+                    <span class="text-verde-esmeralda font-bold">✓</span>
+                    <span>Algo en tu vida está pidiendo claridad urgente desde dentro.</span>
                 </div>
-                <div class="space-y-2">
-                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
-                        <span class="gold-text">✦</span> Soberanía
-                    </h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">
-                        Para dejar de depender de guías externos y empezar a vivir como creador en evolución consciente de tu propia existencia.
-                    </p>
+                <div class="flex items-start gap-3 p-3 bg-white/50 rounded-lg">
+                    <span class="text-verde-esmeralda font-bold">✓</span>
+                    <span>No buscas más información saturada; buscas orden real.</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white/50 rounded-lg">
+                    <span class="text-verde-esmeralda font-bold">✓</span>
+                    <span>Sabes que hay una versión más honesta de ti queriendo salir.</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white/50 rounded-lg">
+                    <span class="text-verde-esmeralda font-bold">✓</span>
+                    <span>Estás dispuesto a soltar el personaje y habitar tu verdad.</span>
+                </div>
+                <div class="flex items-start gap-3 p-3 bg-white/50 rounded-lg sm:col-span-2">
+                    <span class="text-verde-esmeralda font-bold">✓</span>
+                    <span>Quieres tomar decisiones firmes desde la calma y la coherencia, no desde la necesidad.</span>
                 </div>
             </div>
         </section>
 
-        <section class="card-glass p-6 sm:p-8 rounded-2xl space-y-6">
-            <h2 class="text-xl font-semibold gold-text uppercase tracking-wider text-sm border-b border-gray-800 pb-3">
-                Estructura y Metodología
-            </h2>
-            <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-300">
-                <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-800">
-                    <strong class="text-white block mb-1">⏱️ Duración:</strong> 4 semanas de acompañamiento activo.
-                </div>
-                <div class="bg-gray-900/50 p-4 rounded-xl border border-gray-800">
-                    <strong class="text-white block mb-1">💻 Modalidad:</strong> Sesiones online en vivo vía Zoom (1h 30m aprox c/u).
-                </div>
+        <section class="grid md:grid-cols-2 gap-6">
+            <div class="card-arena p-6 sm:p-8 relative overflow-hidden">
+                <h3 class="text-xl font-bold font-serif text-verde-esmeralda mb-2">1. Claridad</h3>
+                <p class="text-sm text-verde-bosque leading-relaxed font-medium">
+                    Para reconocer lo real y dejar de sostener estructuras, roles o relaciones que ya no te corresponden.
+                </p>
             </div>
-
-            <ul class="space-y-3 text-sm text-gray-300 pt-2">
-                <li class="flex items-start gap-3">
-                    <span class="gold-text font-bold">01.</span>
-                    <span><strong>Diagnóstico Operativo:</strong> Evaluación de tu situación y reto actual.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="gold-text font-bold">02.</span>
-                    <span><strong>Diseño Intencionado:</strong> Facilitamos la creación estructurada de tu estado deseado.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="gold-text font-bold">03.</span>
-                    <span><strong>Reingeniería del Ser:</strong> Desarrollo e integración profunda de tu nueva estructura interna.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="gold-text font-bold">04.</span>
-                    <span><strong>Acompañamiento Personalizado:</strong> Prácticas integrativas directas en cada etapa.</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="gold-text font-bold">05.</span>
-                    <span><strong>Recursos y Misiones:</strong> Herramientas digitales + compromisos prácticos para acelerar tu evolución.</span>
-                </li>
-            </ul>
-        </section>
-
-        <section class="card-glass p-6 sm:p-8 rounded-2xl border-l-4 border-l-yellow-500">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <span class="text-xs uppercase tracking-widest text-gray-400">Inversión del Programa</span>
-                    <h3 class="text-2xl font-bold text-white mt-1">Programa Completo (4 Semanas)</h3>
-                    <p class="text-xs text-green-400 mt-1">✓ Incluye 25% de Descuento Especial Aplicado</p>
-                </div>
-                <div class="text-right">
-                    <span class="line-through text-gray-500 text-sm">$ 1.960.000 COP</span>
-                    <div class="text-3xl font-extrabold gold-gradient-text">$ 1.470.000 COP</div>
-                </div>
+            <div class="card-arena p-6 sm:p-8 relative overflow-hidden">
+                <h3 class="text-xl font-bold font-serif text-verde-esmeralda mb-2">2. Soberanía</h3>
+                <p class="text-sm text-verde-bosque leading-relaxed font-medium">
+                    Para dejar de depender de guías o referentes externos y empezar a legislar tu propia existencia en evolución consciente.
+                </p>
             </div>
         </section>
 
-        <section class="card-glass p-6 sm:p-8 rounded-2xl space-y-6">
-            <div class="border-b border-gray-800 pb-4">
-                <h2 class="text-xl font-bold gold-text">Aceptación y Registro Oficial</h2>
-                <p class="text-xs text-gray-400 mt-1">Diligencia tus datos para formalizar tu orden de inicio. Al presionar el botón, recibirás la confirmación y nos llegará la notificación inmediatamente.</p>
+        <section class="card-clara p-6 sm:p-10 space-y-8">
+            <div class="border-b border-yellow-600/20 pb-4">
+                <span class="text-xs uppercase tracking-widest text-dorado font-bold">Acompañamiento Estratégico</span>
+                <h2 class="text-2xl font-bold font-serif text-verde-bosque mt-1">Estructura del Programa (4 Semanas)</h2>
+                <p class="text-sm text-verde-bosque mt-1 font-medium">Sesiones online en vivo vía Zoom (1 hora y 30 minutos aprox. cada una).</p>
+            </div>
+            <div class="space-y-6 text-sm text-verde-bosque">
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-white border border-dorado flex items-center justify-center font-bold text-dorado shrink-0">01</div>
+                    <div>
+                        <h4 class="text-base font-bold text-verde-esmeralda">Diagnóstico Operativo</h4>
+                        <p class="mt-1 font-medium">Evaluación profunda de la situación y el reto actual que estás atravesando.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-white border border-dorado flex items-center justify-center font-bold text-dorado shrink-0">02</div>
+                    <div>
+                        <h4 class="text-base font-bold text-verde-esmeralda">Diseño del Estado Intencionado</h4>
+                        <p class="mt-1 font-medium">Facilitamos la estructura clara y la dirección consciente de tu nuevo estado.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-white border border-dorado flex items-center justify-center font-bold text-dorado shrink-0">03</div>
+                    <div>
+                        <h4 class="text-base font-bold text-verde-esmeralda">Reingeniería del Ser</h4>
+                        <p class="mt-1 font-medium">Desarrollo e integración de la nueva arquitectura interna y hábitos reales.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-white border border-dorado flex items-center justify-center font-bold text-dorado shrink-0">04</div>
+                    <div>
+                        <h4 class="text-base font-bold text-verde-esmeralda">Acompañamiento Personalizado</h4>
+                        <p class="mt-1 font-medium">Prácticas integrativas personalizadas para sostener la transformación en tu vida diaria.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 items-start">
+                    <div class="w-10 h-10 rounded-full bg-white border border-dorado flex items-center justify-center font-bold text-dorado shrink-0">05</div>
+                    <div>
+                        <h4 class="text-base font-bold text-verde-esmeralda">Recursos Digitales + Misiones</h4>
+                        <p class="mt-1 font-medium">Entrega de material exclusivo y compromisos prácticos para acelerar tu evolución.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-arena p-6 sm:p-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="space-y-1">
+                    <span class="inline-block px-3 py-1 rounded-md bg-white text-verde-esmeralda border border-verde-esmeralda text-xs font-bold">
+                        ✓ Descuento Preferencial del 25% Aplicado
+                    </span>
+                    <h3 class="text-2xl font-bold font-serif text-verde-bosque pt-2">Inversión del Programa Completo</h3>
+                    <p class="text-sm font-medium text-verde-bosque">Incluye las 4 semanas de acompañamiento y recursos.</p>
+                </div>
+                <div class="text-left md:text-right">
+                    <span class="line-through text-verde-bosque/70 text-sm block">$ 1.960.000 COP</span>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-verde-esmeralda">$ 1.470.000 COP</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card-clara p-6 sm:p-10 space-y-6" id="registro">
+            <div class="border-b border-yellow-600/20 pb-4">
+                <h2 class="text-2xl font-bold font-serif text-verde-esmeralda">Aceptación de la Orden de Inicio</h2>
+                <p class="text-sm text-verde-bosque mt-1 font-medium">Diligencia tus datos para formalizar tu cupo. Al enviar, recibirás la confirmación inmediatamente.</p>
             </div>
 
-            <form action="https://formspree.io/f/holacomunidadhispana@gmail.com" method="POST" class="space-y-4">
+            <form id="formularioAceptacion" action="https://formsubmit.co/ajax/holacomunidadhispana@gmail.com" method="POST" class="space-y-5">
                 
-                <input type="hidden" name="_subject" value="¡Nueva Aceptación de Programa: Evolución Soberana de Ti!">
-                
+                <input type="hidden" name="_subject" value="¡Nueva Aceptación: Programa Evolución Soberana de Ti!">
+                <input type="hidden" name="_captcha" value="false">
+
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Nombre Completo *</label>
-                        <input type="text" name="Nombre" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-500">
+                        <label class="block text-xs font-bold text-verde-bosque uppercase mb-2">Nombre Completo *</label>
+                        <input type="text" name="Nombre_Completo" required placeholder="Ej: María Pérez" class="w-full bg-white border border-dorado rounded-xl px-4 py-3 text-sm text-verde-bosque focus:outline-none focus:border-verde-esmeralda transition">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Documento Identificación (CC/DNI/Pasaporte) *</label>
-                        <input type="text" name="Documento" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-500">
+                        <label class="block text-xs font-bold text-verde-bosque uppercase mb-2">Documento de Identidad *</label>
+                        <input type="text" name="Documento_Identidad" required placeholder="CC / Pasaporte / DNI" class="w-full bg-white border border-dorado rounded-xl px-4 py-3 text-sm text-verde-bosque focus:outline-none focus:border-verde-esmeralda transition">
                     </div>
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">Correo Electrónico *</label>
-                        <input type="email" name="Email" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-500">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-gray-300 uppercase mb-1">WhatsApp / Teléfono *</label>
-                        <input type="tel" name="WhatsApp" required class="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-2.5 text-sm text-white focus:outline-none focus:border-yellow-500">
-                    </div>
-                </div>
-
-                <div class="pt-2">
-                    <label class="flex items-start gap-3 cursor-pointer">
-                        <input type="checkbox" required class="mt-1 accent-yellow-500 w-4 h-4 rounded">
-                        <span class="text-xs text-gray-300 leading-relaxed">
-                            Confirmo mi inscripción al <strong>Programa Evolución Soberana de Ti</strong> por valor de <strong>$1.470.000 COP</strong> y acepto el compromiso de participación en las sesiones y desarrollo de misiones.
-                        </span>
-                    </label>
-                </div>
-
-                <div class="pt-4">
-                    <button type="submit" class="w-full gold-btn py-4 rounded-xl text-center uppercase tracking-wider text-sm shadow-lg">
-                        ✓ Aceptar Orden de Inicio y Confirmar Programa
-                    </button>
-                </div>
-            </form>
-        </section>
-
-        <footer class="text-center text-xs text-gray-500 space-y-2 pt-6">
-            <p>Comunidad Hispana Online &bull; Luzaura Creativa &bull; Medellín, Colombia</p>
-            <p>Redes: @LuzauraCreativa | @ComunidadHispanaOnline</p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+                        <label class="block text-xs font-bold text-verde-bosque uppercase mb-2
